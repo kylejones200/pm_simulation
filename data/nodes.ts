@@ -6,12 +6,10 @@ export const NODES: Record<string, Node> = {
     id: "kickoff",
     location: "Kickoff Meeting",
     description: [
-      "The boardroom is full.",
-      "You are the project manager for a high‑profile IT rollout.",
-      "The deadline is nine months.",
-      "The budget is strict.",
-      "The client expects clear results.",
-      "Your opening will set priorities.",
+      "The boardroom hums with anticipation—executives, engineers, and finance all watching you.",
+      "You’ve been asked to steer a high‑profile IT rollout that’s already on everyone’s radar.",
+      "Nine months to deliver, a budget with little slack, and expectations that leave no room for guesswork.",
+      "How you frame the challenge now will shape what the team values most in the months ahead.",
     ],
     options: [
       { key: "a", label: "Stress on‑time delivery", next: "react1", impact: { time: +2, scope: -1, stake: 0 } },
@@ -23,10 +21,10 @@ export const NODES: Record<string, Node> = {
     id: "react1",
     location: "Stakeholder Reactions",
     description: [
-      "Finance smiles at thrift.",
-      "Engineering perks up at quality.",
-      "The client pushes for speed.",
-      "You must choose the first deep dive.",
+      "Reactions ripple across the table: finance nods at any hint of thrift.",
+      "Engineers warm to your talk of quality and clarity.",
+      "The client leans forward—speed, they insist, is what will win hearts.",
+      "Where do you dig deeper first?",
     ],
     options: [
       { key: "a", label: "Meet Finance on budget limits", next: "quiz1", impact: { cost: +1 } },
@@ -38,8 +36,8 @@ export const NODES: Record<string, Node> = {
     id: "quiz1",
     location: "Stakeholder Analysis Checkpoint",
     description: [
-      "You recall where stakeholder analysis sits in the framework.",
-      "Your answer gates the charter.",
+      "As the discussion settles, you revisit the playbook in your mind—where does stakeholder analysis truly begin?",
+      "Choose well; the charter won’t move forward without it.",
     ],
     quiz: { prompt: "Which process group includes stakeholder analysis?", correctKey: "a" },
     options: [
@@ -52,9 +50,9 @@ export const NODES: Record<string, Node> = {
     id: "charter",
     location: "Project Charter",
     description: [
-      "The charter is ready.",
-      "The CEO asks how you will balance demands.",
-      "Your choice sets trust.",
+      "The charter draft lands on the table, crisp and promising.",
+      "The CEO fixes you with a steady look: how will you balance the competing demands?",
+      "Your approach here will define credibility for the road ahead.",
     ],
     options: [
       { key: "a", label: "Use the triple constraint and tradeoffs", next: "plan1", impact: { time: +1, cost: +1, scope: +1, stake: +1 } },
@@ -68,8 +66,8 @@ export const NODES: Record<string, Node> = {
     id: "plan1",
     location: "Planning Workshop",
     description: [
-      "The team builds the work breakdown structure.",
-      "Tension rises over detail.",
+      "Whiteboards fill with sticky notes as the team starts sketching a work breakdown structure.",
+      "Debate sparks—go broad and fast, or dig deep and define the edges now?",
     ],
     options: [
       { key: "a", label: "High‑level WBS only", next: "quiz2", impact: { time: +1, scope: -1 } },
@@ -81,7 +79,7 @@ export const NODES: Record<string, Node> = {
     id: "quiz2",
     location: "Sequencing Activities",
     description: [
-      "You must choose the tool that sets logic and float.",
+      "It’s time to stitch the plan into a coherent flow—what technique sets the logic and reveals the slack?",
     ],
     quiz: { prompt: "Which tool sequences activities on the network?", correctKey: "c" },
     options: [
@@ -94,8 +92,8 @@ export const NODES: Record<string, Node> = {
     id: "risk1",
     location: "Risk Planning",
     description: [
-      "Vendor delays, scope drift, and cuts loom.",
-      "You set your approach.",
+      "Whispers of vendor delays, scope creep, and funding cuts drift through the room.",
+      "You decide how to confront uncertainty before it decides for you.",
     ],
     options: [
       { key: "a", label: "Log risks and owners with responses", next: "base1", impact: { time: +1, cost: +1, stake: +1 } },
@@ -107,8 +105,8 @@ export const NODES: Record<string, Node> = {
     id: "base1",
     location: "Baseline Approval",
     description: [
-      "The schedule and budget await sign‑off.",
-      "Finance frowns at contingency.",
+      "Your baseline is assembled—dates, dollars, and deliverables aligned.",
+      "Finance eyes the contingency line like a skeptic at a magic show.",
     ],
     options: [
       { key: "a", label: "Defend contingency as a response", next: "exec1", impact: { cost: +2, stake: +1 } },
@@ -122,9 +120,8 @@ export const NODES: Record<string, Node> = {
     id: "exec1",
     location: "Team Kickoff",
     description: [
-      "Delivery starts.",
-      "A developer flags foggy requirements.",
-      "The client asks for faster output.",
+      "Work begins, and momentum builds—until a developer raises a hand: parts of the spec are foggy.",
+      "Meanwhile, the client taps the table, hungry for faster output.",
     ],
     options: [
       { key: "a", label: "Escalate to executives", next: "quiz3", impact: { stake: -1 } },
@@ -135,7 +132,9 @@ export const NODES: Record<string, Node> = {
   quiz3: {
     id: "quiz3",
     location: "Process Check",
-    description: ["You confirm where directing and managing work belongs."],
+    description: [
+      "You pause to ground the team: which process group actually directs and manages the work?",
+    ],
     quiz: { prompt: "Which process group runs delivery work?", correctKey: "b" },
     options: [
       { key: "a", label: "Planning", next: "scope1", feedback: "Plans guide action yet do not execute it." },
@@ -147,8 +146,7 @@ export const NODES: Record<string, Node> = {
     id: "scope1",
     location: "Scope Change",
     description: [
-      "The client asks for new features.",
-      "Deadlines stay fixed.",
+      "New features shimmer on the horizon—the client wants more, but the calendar refuses to budge.",
     ],
     options: [
       { key: "a", label: "Accept informally", next: "conflict1", impact: { time: -2, cost: -2 } },
@@ -160,8 +158,8 @@ export const NODES: Record<string, Node> = {
     id: "conflict1",
     location: "Design Dispute",
     description: [
-      "Two senior engineers clash on design.",
-      "Throughput drops.",
+      "Two senior engineers lock horns over design philosophy, and progress stutters.",
+      "Left alone, this will ripple through every sprint that follows.",
     ],
     options: [
       { key: "a", label: "Facilitate a resolution meeting", next: "rev1", impact: { stake: +1, time: +1 } },
@@ -175,9 +173,8 @@ export const NODES: Record<string, Node> = {
     id: "rev1",
     location: "Mid‑Project Review",
     description: [
-      "Half the budget is gone.",
-      "Progress sits at forty percent.",
-      "Leaders ask for proof.",
+      "Half the budget is spoken for, yet progress hovers around forty percent.",
+      "Leaders lean in: show us the truth behind the trend.",
     ],
     options: [
       { key: "a", label: "Show Earned Value metrics", next: "quiz4", impact: { stake: +2 } },
@@ -188,7 +185,9 @@ export const NODES: Record<string, Node> = {
   quiz4: {
     id: "quiz4",
     location: "EVM Check",
-    description: ["You compute schedule variance."],
+    description: [
+      "Your dashboard lights up with EVM metrics—time to calculate what the schedule is really telling you.",
+    ],
     quiz: { prompt: "What does Schedule Variance measure?", correctKey: "a" },
     options: [
       { key: "a", label: "EV − PV", next: "risk2", requiresCorrect: true, feedback: "Correct. Positive means ahead." },
@@ -200,8 +199,8 @@ export const NODES: Record<string, Node> = {
     id: "risk2",
     location: "Risk Trigger",
     description: [
-      "A vendor slips by two weeks.",
-      "You adjust the plan.",
+      "Bad news lands in your inbox: a vendor has slipped by two weeks.",
+      "Something must give—resources, sequence, or expectations.",
     ],
     options: [
       { key: "a", label: "Crash with added staff", next: "quality1", impact: { cost: -2, time: +2 } },
@@ -213,8 +212,8 @@ export const NODES: Record<string, Node> = {
     id: "quality1",
     location: "Quality Issue",
     description: [
-      "Testing reveals defects.",
-      "Rework will raise cost.",
+      "Testing uncovers a cluster of defects—nothing catastrophic, but enough to matter.",
+      "Rework will cost time and money; reputation is also on the line.",
     ],
     options: [
       { key: "a", label: "Fix now", next: "close1", impact: { scope: +1, cost: -2, time: -1, stake: +1 } },
@@ -228,8 +227,8 @@ export const NODES: Record<string, Node> = {
     id: "close1",
     location: "Final Handover",
     description: [
-      "The system is live.",
-      "Executives ask for closure steps.",
+      "The system goes live to a modest round of applause and cautious smiles.",
+      "Executives ask what remains to formally wrap this effort.",
     ],
     options: [
       { key: "a", label: "Run formal acceptance and close contracts", next: "quiz5", impact: { stake: +2, cost: +1 } },
@@ -240,7 +239,9 @@ export const NODES: Record<string, Node> = {
   quiz5: {
     id: "quiz5",
     location: "Lessons Learned",
-    description: ["You record insights for the next project."],
+    description: [
+      "You gather the team to capture insights—what worked, what hurt, and what you’d repeat or retire.",
+    ],
     quiz: { prompt: "Which process group captures lessons learned?", correctKey: "b" },
     options: [
       { key: "a", label: "Planning", next: "ending", feedback: "You capture lessons at the end." },
@@ -252,8 +253,8 @@ export const NODES: Record<string, Node> = {
     id: "ending",
     location: "Project Outcome",
     description: [
-      "You present the close‑out report.",
-      "Results depend on your choices.",
+      "You present a clear close‑out report that ties decisions to outcomes.",
+      "The results reflect every trade you made along the way.",
     ],
     options: [
       { key: "r", label: "Play again", next: "kickoff" },

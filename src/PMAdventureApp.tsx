@@ -149,7 +149,7 @@ export default function PMAdventureApp() {
           <div className="flex items-start gap-4">
             <div className="flex-1">
               <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">Project Management Adventure</h1>
-              <p className="text-sm/6 opacity-95 mt-1">A concise, text‑based simulation for scope, time, cost, and stakeholder tradeoffs.</p>
+              <p className="text-sm/6 opacity-95 mt-1">Lead a project from kickoff to close‑out in a short narrative journey where every choice nudges time, cost, scope, and trust.</p>
             </div>
             <div className="relative group">
               <button
@@ -191,7 +191,6 @@ export default function PMAdventureApp() {
       <Meters meters={meters} />
 
       <section className="mt-6 card p-6 md:p-7 animate-fade-in">
-        <div className="text-xs uppercase tracking-wide opacity-60">Location</div>
         <h2 className="text-xl font-semibold">{node.location}</h2>
         <div className="mt-3 space-y-3 leading-relaxed">
           {node.description.map((s, i) => (
@@ -247,7 +246,7 @@ export default function PMAdventureApp() {
       </section>
 
       <footer className="mt-8 text-xs opacity-60">
-        <p>Tip: project choices adjust meters. Keep them balanced for a strong close‑out.</p>
+        <p>Tip: each decision shifts your meters. Keep them in balance to land a confident, well‑received finish.</p>
       </footer>
     </div>
   );
